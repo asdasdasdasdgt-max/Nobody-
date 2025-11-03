@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بورتفوليو معلق صوتي - عبدالله عوض</title>
+    <!-- تضمين Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- تخصيص الخط ليتناسب مع اللغة العربية - تصميم سينمائي داكن -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        
+        /* الألوان الجديدة: أسود عميق (Cinematic Black) وسماوي كهربائي (Electric Blue) */
+        .bg-primary-dark {
+            background-color: #0B0B0D; /* أسود مائل للرمادي الداكن جداً */
+        }
+        .bg-card-dark {
+            background-color: #1C1C1E; /* رمادي فحمي غامق للبطاقات */
+        }
+        .electric-blue {
+            color: #00BFFF; /* أزرق كهربائي حاد */
+        }
+        .border-electric {
+            border-color: #00BFFF;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0B0B0D; 
+            color: #E0E0E0; /* نص أبيض رمادي ناعم */
+            direction: rtl;
+        }
+        .content-container {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 100vh;
+            background-color: #0B0B0D; 
+        }
+
+        /* زر رئيسي أزرق كهربائي */
+        .btn-primary {
+            background-color: transparent; 
+            color: #E0E0E0; 
+            border: 2px solid #00BFFF; 
+            padding: 1rem 3.5rem; 
+            border-radius: 0.5rem;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.4); /* ظل نيون خفيف */
+            font-weight: 700;
+        }
+        .btn-primary:hover {
+            background-color: #00BFFF;
+            color: #0B0B0D; /* نص داكن على خلفية مضيئة */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 191, 255, 0.8);
+        }
+        
+        .card {
+            background-color: #1C1C1E; 
+            border-radius: 0.75rem; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7); 
+            padding: 2.5rem;
+            transition: all 0.4s;
+            border-left: 5px solid transparent; 
+        }
+        .card:hover {
+            transform: scale(1.02);
+            border-left: 5px solid #00BFFF; /* خط عمودي كهربائي */
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.2); 
+        }
+
+        .section-heading {
+            border-bottom: 3px solid #00BFFF; 
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 3rem; 
+            text-shadow: 0 0 5px rgba(0, 191, 255, 0.3);
+        }
+
+        /* تصميم مشغل الصوت ليتناسب مع الثيم الداكن */
+        audio {
+            width: 100%;
+            margin-top: 1rem;
+            /* قلب ألوان المشغل إلى الأبيض/الرمادي ليناسب الخلفية الداكنة */
+            filter: invert(1) hue-rotate(180deg) brightness(1.5); 
+            opacity: 0.85;
+            transition: opacity 0.3s;
+        }
+        audio:hover {
+             opacity: 1;
+        }
+
+        /* Hero Background Simulation (Deep/Space/Sound Wave) */
+        .hero-bg {
+            background: linear-gradient(135deg, #0b0b0d 0%, #151515 50%, #0b0b0d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 191, 255, 0.1) 0%, rgba(0, 0, 0, 0) 60%);
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        
+        /* تنسيق حاوية صور SVG */
+        .svg-container {
+            width: 100%;
+            height: 200px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111113; /* خلفية أغمق للرسوم */
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-primary-dark">
+    
+    <div class="content-container">
+        <!-- شريط التنقل (Header) -->
+        <header class="bg-card-dark shadow-xl sticky top-0 z-50 border-b border-gray-800">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center max-w-7xl">
+                <h1 class="text-3xl font-black electric-blue tracking-wider">
+                    <a href="#hero" class="hover:opacity-80 transition duration-300">
+                        A. AWAD
+                    </a>
+                </h1>
+                <!-- قائمة التنقل للديسكتوب -->
+                <nav class="hidden md:flex space-x-8 space-x-reverse text-xl font-bold">
+                    <a href="#about" class="text-gray-400 hover:electric-blue transition duration-300">التعريف</a>
+                    <a href="#portfolio" class="text-gray-400 hover:electric-blue transition duration-300">الأعمال</a>
+                    <a href="#clients" class="text-gray-400 hover:electric-blue transition duration-300">العملاء</a>
+                    <a href="#contact" class="text-gray-400 hover:electric-blue transition duration-300">تواصل</a>
+                </nav>
+                <!-- زر قائمة الموبايل (وهمي - للتبسيط) -->
+                <button class="md:hidden text-gray-400 hover:electric-blue focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-6 py-16 md:py-20 max-w-7xl">
+
+            <!-- 1. قسم المقدمة (Hero Section) - سينمائي -->
+            <section id="hero" class="hero-bg text-center pt-24 pb-40 rounded-lg mb-20 shadow-2xl shadow-gray-900">
+                <div class="mb-10">
+                    <!-- أيقونة المايكروفون (الرمز السينمائي للصوت) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 md:w-28 md:h-28 mx-auto electric-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </div>
+                <!-- النص المطلوب: "عبدالله عوض" (تعديل حسب الطلب) -->
+                <h2 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4 tracking-wider" style="text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);">
+                    <span class="electric-blue">عَبْد الله</span> عَوَض
+                </h2>
+                <!-- الوصف المطلوب: Voice-over Artist & Documentary Narrator -->
+                <p class="text-3xl md:text-4xl text-gray-300 font-medium mb-12 border-b-2 border-electric/50 pb-2 inline-block">
+                    Voice-over Artist & Documentary Narrator
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8 sm:space-x-reverse">
+                    <a href="#portfolio" class="btn-primary inline-flex items-center justify-center space-x-2 space-x-reverse">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.121-7.072a8 8 0 010 11.314m-12.728-11.314a8 8 0 010 11.314m2.122-7.072a5 5 0 010 7.072M5 12h.01M19 12h.01"></path></svg>
+                        <span>🎧 استمع إلى أعمالي</span>
+                    </a>
+                    <a href="#contact" class="btn-primary inline-flex items-center justify-center space-x-2 space-x-reverse">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <span>📩 تواصل معي</span>
+                    </a>
+                </div>
+            </section>
+            
+            <!-- 2. قسم التعريف (About Section) -->
+            <section id="about" class="py-20">
+                <h3 class="text-4xl font-bold electric-blue text-center section-heading mx-auto">
+                    من أنا؟ رحلة إلى عمق الصوت
+                </h3>
+                <div class="card p-10 md:p-14 max-w-5xl mx-auto border-4 border-gray-800">
+                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8 text-center font-medium">
+                        معلق صوتي مصري، أروي القصص العلمية والوثائقية بصوتٍ عميقٍ ينقل المستمع إلى عمق الفكرة. 
+                        صوتي الصخري الجاد هو الأداة المثالية لتقديم المحتوى الذي يتطلب **إقناعاً، قوة، وثقة** لا تتردد. 
+                        أعمل على مشاريع تجمع بين العلم والإبداع لضمان وصول رسالتك بأقصى تأثير.
+                    </p>
+                    <div class="flex justify-center text-center mt-8">
+                        <span class="text-lg text-gray-500 border-r border-gray-700 pr-4 pl-4">خبرة 4 سنوات</span>
+                        <span class="text-lg text-gray-500 pl-4">مشاريع وثائقية وإعلانية</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- خط فاصل -->
+            <hr class="border-t-2 border-gray-800 my-16">
+
+            <!-- 3. قسم الأعمال (Portfolio) -->
+            <section id="portfolio" class="py-20">
+                <h3 class="text-4xl font-bold electric-blue text-center section-heading mx-auto">
+                    مكتبة أعمالي الصوتية
+                </h3>
+                <p class="text-center text-xl text-gray-500 mb-10">استمع إلى عينات مختلفة من نبراتي المتخصصة.</p>
+                <!-- هنا سيتم وضع بطاقات المشاريع تلقائيًا -->
+                <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- سيتم ملء هذا الفراغ بواسطة سكريبت JS -->
+                </div>
+            </section>
+
+            <!-- خط فاصل -->
+            <hr class="border-t-2 border-gray-800 my-16">
+
+            <!-- 4. قسم التقييمات / العملاء (Testimonials/Clients) -->
+            <section id="clients" class="py-20">
+                <h3 class="text-4xl font-bold electric-blue text-center section-heading mx-auto">
+                    شركاء النجاح
+                </h3>
+                <p class="text-center text-xl text-gray-500 mb-12">أثق بك، وأنا بدوري أعمل بجد لكسب ثقة العملاء</p>
+                
+                <div class="card max-w-4xl mx-auto p-10">
+                    <div class="text-center mb-10">
+                        <!-- أيقونة المايكروفون (تم الاحتفاظ بها من التعديل السابق) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 electric-blue mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="22"></line>
+                        </svg>
+                        <blockquote class="text-2xl italic text-gray-300">
+                            "صوت عبدالله هو بالضبط ما نحتاجه للمحتوى الوثائقي. العمق والقوة في الأداء لا مثيل لهما. التزامه بالمواعيد فاق التوقعات."
+                        </blockquote>
+                        <footer class="mt-4 text-gray-500 text-xl font-semibold">— المدير الإبداعي، <span class="electric-blue">شبكة البث الوثائقي</span></footer>
+                    </div>
+
+                    <div class="mt-12 pt-8 border-t border-gray-700">
+                        <p class="text-center text-lg text-gray-400 mb-6">بعض الجهات التي تعاونت معها (شعارات وهمية)</p>
+                        <div class="flex justify-around items-center flex-wrap gap-8 opacity-75">
+                            <span class="text-2xl font-black text-gray-500 hover:text-white transition duration-300">MEDIA HUB</span>
+                            <span class="text-2xl font-black electric-blue hover:text-white transition duration-300">SCI-PRO</span>
+                            <span class="text-2xl font-black text-gray-500 hover:text-white transition duration-300">AL-AFDAL</span>
+                            <span class="text-2xl font-black electric-blue hover:text-white transition duration-300">STUDIO X</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- خط فاصل -->
+            <hr class="border-t-2 border-gray-800 my-16">
+
+            <!-- 5. قسم التواصل (Contact) -->
+            <section id="contact" class="py-20 text-center">
+                <h3 class="text-4xl font-bold electric-blue section-heading mx-auto">
+                    لننجح معاً
+                </h3>
+                <p class="text-2xl text-gray-400 mb-12">
+                    أرسل لي تفاصيل مشروعك أو <span class="electric-blue font-bold">تواصل مباشرة</span> عبر الروابط أدناه.
+                </p>
+                
+                <div class="card max-w-xl mx-auto p-8 border-4 border-gray-800">
+                    <!-- روابط التواصل الاجتماعي (أكثر بروزاً) -->
+                    <div class="flex justify-center space-x-8 space-x-reverse pt-4 mb-8">
+                        <!-- واتساب -->
+                        <a href="https://wa.me/201140687298" target="_blank" class="flex flex-col items-center group transition duration-300" aria-label="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 electric-blue group-hover:text-white transition duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span class="text-gray-400 group-hover:electric-blue text-sm mt-1 transition duration-300">واتساب</span>
+                        </a>
+                        <!-- بريد إلكتروني -->
+                        <a href="mailto:asdasdasdasdgt@gmail.com" class="flex flex-col items-center group transition duration-300" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 electric-blue group-hover:text-white transition duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span class="text-gray-400 group-hover:electric-blue text-sm mt-1 transition duration-300">البريد الإلكتروني</span>
+                        </a>
+                        <!-- LinkedIn (Placeholder) -->
+                        <a href="#" target="_blank" class="flex flex-col items-center group transition duration-300" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 electric-blue group-hover:text-white transition duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            <span class="text-gray-400 group-hover:electric-blue text-sm mt-1 transition duration-300">لينكدإن</span>
+                        </a>
+                    </div>
+                    
+                    <p class="text-gray-500 mb-6 border-t border-gray-800 pt-6">أو املأ النموذج وسأجيبك في أقرب وقت:</p>
+
+                    <!-- نموذج اتصال بسيط (Placeholder) -->
+                    <form class="space-y-4 text-right">
+                        <input type="text" placeholder="اسمك الكريم" class="w-full bg-primary-dark border border-gray-700 text-gray-300 p-3 rounded-md focus:border-electric-blue focus:ring-1 focus:ring-electric-blue outline-none" required>
+                        <input type="email" placeholder="بريدك الإلكتروني" class="w-full bg-primary-dark border border-gray-700 text-gray-300 p-3 rounded-md focus:border-electric-blue focus:ring-1 focus:ring-electric-blue outline-none" required>
+                        <textarea placeholder="رسالتك وملخص المشروع" rows="4" class="w-full bg-primary-dark border border-gray-700 text-gray-300 p-3 rounded-md focus:border-electric-blue focus:ring-1 focus:ring-electric-blue outline-none" required></textarea>
+                        <button type="submit" class="btn-primary w-full text-xl font-bold mt-4">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- تذييل الصفحة (Footer) -->
+        <footer class="bg-card-dark text-white mt-20 border-t border-gray-800">
+            <div class="container mx-auto px-6 py-8 text-center max-w-7xl">
+                <p class="text-lg font-bold mb-4 text-gray-400">
+                    عبد الله عوض | Voice-over Artist
+                </p>
+                <p class="text-sm text-gray-600 mt-4">
+                    &copy; <script>document.write(new Date().getFullYear())</script> جميع الحقوق محفوظة | تصميم سينمائي
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- سكريبت إدارة المشاريع -->
+    <script>
+
+        // ==========================================================
+        // 1. بيانات المشاريع
+        // تم تحديث رابط المشروع الثالث (إعلان عن الزكاة) إلى رابط مباشر (dl=1)
+        // ==========================================================
+        const projectsData = [
+            {
+                title: "وثائقي 'الثقوب السوداء'",
+                description: "تعليق صوتي ونص وثائقي بأسلوب علمي وسينمائي، مستخدماً نبرة جادة ومؤثرة تليق بعظمة الموضوع.",
+                tags: ["صوت جاد", "كتابة محتوى", "وثائقي"],
+                audioUrl: "https://www.dropbox.com/scl/fi/cek00l5rsfs4wi4piva2a/.mp3?rlkey=z29oka9hqh5vgy0hvcd3pc9c2&dl=1" 
+            },
+            {
+                title: "إعلان 'مستر سموذي'",
+                description: "أداء صوتي ترويجي سريع الإيقاع وحماسي، يهدف إلى جذب الجمهور وتسليط الضوء على المنتج بحيوية.",
+                tags: ["أداء إعلاني", "سريع الإيقاع", "تجاري"],
+                audioUrl: "https://www.dropbox.com/scl/fi/zagvhp23llkuzlyvohwcr/Mixdown-2.wav?rlkey=ee9noqwgshhn7i5g7jseiio6l&st=yv7b46w0&dl=1" 
+            },
+            {
+                title: "إعلان عن الزكاة",
+                description: "تعليق صوتي مؤثر وعاطفي لحملة خيرية للزكاة. النبرة عميقة ودافئة ومحفزة على العطاء.",
+                tags: ["أداء خيري", "مؤثر", "نبرة دافئة"],
+                audioUrl: "https://www.dropbox.com/scl/fi/n4adojy3w6roc26igsg6t/Mixdown.mp3?rlkey=pzl3ftu4hs8heeg3rczo8dsv0&st=uifwvshj&dl=1" // <-- تم التعديل هنا dl=1
+            }
+        ];
+
+        // ==========================================================
+        // 2. دالة عرض صور SVG (رسوم تعبيرية)
+        // تم تحديث رسم الـ SVG الخاص بإعلان الزكاة
+        // ==========================================================
+        function getSvgForProject(title) {
+            switch (title) {
+                case "وثائقي 'الثقوب السوداء'":
+                    // SVG لتمثيل الفضاء/الثقب الأسود
+                    return `
+                        <svg class="w-3/4 h-3/4 electric-blue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- مجرة/دائرة متلاشية -->
+                            <circle cx="12" cy="12" r="10" stroke="#1C1C1E" fill="#111113"/>
+                            <path d="M12 2a10 10 0 0 0 0 20c-5.5-5.5-5.5-14.5 0-20" fill="url(#grad1)"/>
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#0B0B0D;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#00BFFF;stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:#0B0B0D;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M18.364 5.636l-1.414 1.414m-10.607 10.607l-1.414 1.414m12.021-2.828l1.414 1.414M5.636 5.636l1.414 1.414m12.728 0h-16m16 8h-16m12 0a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" stroke="#00BFFF" stroke-opacity="0.8"/>
+                        </svg>
+                    `;
+                case "إعلان 'مستر سموذي'":
+                    // SVG لتمثيل المشروبات/العصائر
+                    return `
+                        <svg class="w-3/4 h-3/4 text-gray-200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- كوب العصير -->
+                            <path d="M6 9l4 12h4l4-12H6z" fill="#00BFFF" fill-opacity="0.3"/>
+                            <!-- خطوط التزيين/القش -->
+                            <path d="M10 2v7" stroke="#00BFFF" stroke-width="2"/>
+                            <path d="M14 2v7" stroke="#00BFFF" stroke-width="2"/>
+                            <!-- سائل داخل الكوب -->
+                            <path d="M6 10c0 2 2 4 6 4s6-2 6-4" fill="#00BFFF" fill-opacity="0.5"/>
+                            <path d="M6 12l4 8h4l4-8" stroke="#00BFFF"/>
+                            <!-- قاعدة الكوب -->
+                            <path d="M8 22h8" stroke="#00BFFF" stroke-width="2"/>
+                        </svg>
+                    `;
+                case "إعلان عن الزكاة":
+                    // SVG لتمثيل العطاء/الزكاة (صندوق الصدقات مع قلب)
+                    return `
+                        <svg class="w-3/4 h-3/4 electric-blue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- الصندوق/الوعاء -->
+                            <path d="M4 17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10z" fill="#00BFFF" fill-opacity="0.2" stroke="none"/>
+                            <rect x="4" y="5" width="16" height="14" rx="2" ry="2" stroke="#00BFFF"/>
+                            <!-- فتحة الإدخال -->
+                            <line x1="8" y="9" x2="16" y2="9" stroke="#00BFFF" stroke-width="2"/>
+                            <!-- القلب (رمز العطاء) -->
+                            <path d="M12 13.5l1.5-1.5 2 2-3.5 3.5-3.5-3.5 2-2z" fill="#00BFFF" stroke="#00BFFF"/>
+                        </svg>
+                    `;
+                default:
+                    // SVG افتراضي
+                    return `
+                        <svg class="w-3/4 h-3/4 electric-blue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="#00BFFF" fill-opacity="0.3"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            <line x1="12" y1="19" x2="12" y2="22"></line>
+                        </svg>
+                    `;
+            }
+        }
+
+        // ==========================================================
+        // 3. دالة بناء واجهة المشاريع
+        // ==========================================================
+        function renderProjects() {
+            const container = document.getElementById('projects-container');
+            if (!container) return; 
+
+            // إنشاء HTML لكل مشروع من بيانات المصفوفة
+            const projectsHTML = projectsData.map((project, index) => {
+                
+                // جلب SVG المخصص
+                const svgContent = getSvgForProject(project.title);
+
+                // إنشاء تاغات المشروع بتصميم سينمائي
+                const tagsHTML = project.tags.map(tag => `
+                    <span class="bg-primary-dark text-gray-500 text-sm font-semibold px-3 py-1 rounded-full border border-gray-800">${tag}</span>
+                `).join('');
+
+                return `
+                    <div class="card p-6 project-card border-2 border-gray-800" data-index="${index}">
+                        <!-- SVG Image (رسم تعبيري) -->
+                        <div class="mb-5 rounded-md overflow-hidden border-2 border-gray-700 svg-container">
+                            ${svgContent}
+                        </div>
+                        <h4 class="text-2xl font-bold electric-blue leading-snug mb-2">${project.title}</h4>
+                        <p class="text-gray-400 text-lg mb-5">${project.description}</p>
+                        <div class="flex flex-wrap gap-2 mb-6">${tagsHTML}</div>
+                        
+                        <!-- زر التشغيل الذي سيظهر المشغل -->
+                        <button class="btn-primary w-full text-center block text-lg font-bold !bg-transparent !text-electric-blue border border-electric-blue hover:!bg-electric-blue hover:!text-black" onclick="toggleAudio(${index}, this)">
+                            تشغيل العينة الصوتية
+                        </button>
+
+                        <!-- مشغل الصوت المخفي - سيظهر عند النقر -->
+                        <audio id="audio-${index}" controls class="hidden">
+                            <source src="${project.audioUrl}" type="audio/mpeg">
+                            متصفحك لا يدعم مشغل الصوت.
+                        </audio>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = projectsHTML;
+        }
+
+        // ==========================================================
+        // 4. دالة التحكم في تشغيل الصوت
+        // ==========================================================
+        function toggleAudio(index, buttonElement) {
+            const audioPlayer = document.getElementById(`audio-${index}`);
+            
+            // إيقاف جميع المشغلات الأخرى
+            document.querySelectorAll('audio').forEach(audio => {
+                if (audio.id !== `audio-${index}` && !audio.paused) {
+                    audio.pause();
+                }
+            });
+
+            // إخفاء جميع مشغلات الصوت وإعادة تسمية الأزرار
+            document.querySelectorAll('audio').forEach(audio => {
+                if (audio.id !== `audio-${index}`) {
+                    audio.classList.add('hidden');
+                }
+            });
+            document.querySelectorAll('.project-card button').forEach(btn => {
+                // التأكد من أن الزر الأصلي هو "تشغيل" قبل إعادة تسميته
+                if (btn !== buttonElement && btn.textContent.includes('إيقاف')) {
+                     btn.textContent = "تشغيل العينة الصوتية";
+                }
+            });
+
+
+            if (audioPlayer.classList.contains('hidden')) {
+                // إذا كان مخفياً، أظهره وقم بالتشغيل
+                audioPlayer.classList.remove('hidden');
+                audioPlayer.play();
+                buttonElement.textContent = "إيقاف العينة (قيد التشغيل)";
+            } else {
+                // إذا كان مرئياً، أخفه وأوقف التشغيل
+                audioPlayer.pause();
+                audioPlayer.classList.add('hidden');
+                buttonElement.textContent = "تشغيل العينة الصوتية";
+            }
+        }
+
+        // تشغيل وظيفة عرض المشاريع عند تحميل الصفحة
+        window.onload = renderProjects;
+    </script>
+</body>
+</html>
+
