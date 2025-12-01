@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="doc.title">عبد الله عوض | فنان التعليق الصوتي السينمائي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        amber: {
+                            450: '#F59E0B',
+                            550: '#D97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-main: #0a0a0a;
+            --bg-card: #171717;
+            --bg-highlight: #262626;
+            --text-main: #f5f5f5;
+            --text-muted: #a3a3a3;
+            --border-color: #404040;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --glow-color: rgba(245, 158, 11, 0.5);
+        }
+
+        .light-mode {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-highlight: #f1f5f9;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --accent: #d97706;
+            --accent-hover: #b45309;
+            --glow-color: rgba(217, 119, 6, 0.3);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        [dir="ltr"] body, .font-english, .nums {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cinematic-glow {
+            text-shadow: 0 0 15px var(--glow-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px var(--glow-color);
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .journey-visual {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hidden-force {
+            display: none !important;
+        }
+
+        .custom-input {
+            background-color: var(--bg-highlight);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+        .custom-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--glow-color);
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-opacity-90 border-b border-[var(--border-color)]" style="background-color: var(--bg-card);">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-black tracking-tighter text-[var(--accent)] font-english">A.AWAD</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#portfolio" class="text-sm font-bold hover:text-[var(--accent)] transition" data-i18n="nav.portfolio">المشاريع</a>
+                <a href="#journey" class="text-sm font-bold hover:text-[var(--accent)] transition" data-i18n="nav.journey">الرحلة الصوتية</a>
+                <a href="#calculator" class="text-sm font-bold hover:text-[var(--accent)] transition" data-i18n="nav.calc">التكلفة</a>
+                <a href="#contact" class="text-sm font-bold hover:text-[var(--accent)] transition" data-i18n="nav.contact">تواصل معي</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button id="theme-btn" class="p-2 rounded-full hover:bg-[var(--bg-highlight)] transition text-xl">☀️</button>
+                <button id="lang-btn" class="px-3 py-1 rounded-full border border-[var(--border-color)] text-xs font-bold hover:border-[var(--accent)] transition font-english">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--bg-main)] to-[var(--bg-main)] z-10"></div>
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] animate-pulse"></div>
+        
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-[var(--accent)] text-[var(--accent)] text-sm font-bold animate-bounce">
+                <span data-i18n="hero.tag">خبير كيمياء الصوت</span>
+            </div>
+            <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight">
+                <span data-i18n="hero.name1">عبد الله</span>
+                <span class="text-[var(--accent)] cinematic-glow" data-i18n="hero.name2">عوض</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-[var(--text-muted)] italic mb-8 font-light" data-i18n="hero.quote">
+                "لكل حكاية صوت… وبعض الأصوات تحوّل الحكايات إلى عوالم."
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#portfolio" class="btn-primary px-8 py-4 rounded-full font-bold text-lg" data-i18n="hero.cta">استمع إلى الأعمال</a>
+                <a href="#contact" class="px-8 py-4 rounded-full border border-[var(--border-color)] hover:bg-[var(--bg-highlight)] font-bold transition" data-i18n="hero.contact">تواصل الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding py-20">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <div class="absolute -inset-4 bg-[var(--accent)] rounded-2xl opacity-20 blur-xl"></div>
+                <div class="relative card p-8 rounded-2xl">
+                    <h2 class="text-3xl font-bold mb-4 text-[var(--accent)]" data-i18n="about.title">الراوي خلف الصوت</h2>
+                    <p class="text-[var(--text-muted)] leading-relaxed mb-4 text-lg" data-i18n="about.desc">
+                        فنان صوتي مصري، يمزج بين خامة الصوت القوية والأداء التمثيلي الدقيق. لا أكتفي بالقراءة، بل أصنع عوالماً صوتية باستخدام أحدث تقنيات الهندسة الصوتية (Studio One). خبرتي تمتد من الوثائقيات العلمية المعقدة إلى الإعلانات التجارية الحماسية.
+                    </p>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                    <div class="text-3xl">🎙️</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1" data-i18n="about.s1.title">استوديو احترافي</h3>
+                        <p class="text-sm text-[var(--text-muted)]" data-i18n="about.s1.desc">جودة بث (Broadcast Quality) مع عزل تام.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-3xl">⚡</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1" data-i18n="about.s2.title">سرعة في التسليم</h3>
+                        <p class="text-sm text-[var(--text-muted)]" data-i18n="about.s2.desc">التزام صارم بالمواعيد النهائية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Journey (Interactive) -->
+    <section id="journey" class="section-padding py-20 relative overflow-hidden transition-colors duration-700" style="background-color: var(--bg-highlight);">
+        <div class="relative z-10 max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4" data-i18n="journey.title">الرحلة الصوتية</h2>
+                <p class="text-[var(--text-muted)]" data-i18n="journey.subtitle">اختر "العالم" لتعيش التجربة وتكتشف النبرة المناسبة لمشروعك.</p>
+            </div>
+
+            <!-- Journey Controls (Updated with i18n) -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="setJourney('whisper')" class="journey-btn px-6 py-2 rounded-full border border-[var(--border-color)] hover:border-[var(--accent)] transition font-bold text-sm" data-active-class="bg-indigo-900 text-white border-indigo-500" data-i18n="journey.btn.whisper">الهمس</button>
+                <button onclick="setJourney('doc')" class="journey-btn px-6 py-2 rounded-full border border-[var(--border-color)] hover:border-[var(--accent)] transition font-bold text-sm" data-active-class="bg-slate-800 text-white border-slate-500" data-i18n="journey.btn.doc">الوثائقي</button>
+                <button onclick="setJourney('epic')" class="journey-btn px-6 py-2 rounded-full border border-[var(--border-color)] hover:border-[var(--accent)] transition font-bold text-sm" data-active-class="bg-red-900 text-white border-red-500" data-i18n="journey.btn.epic">الملحمي</button>
+                <button onclick="setJourney('character')" class="journey-btn px-6 py-2 rounded-full border border-[var(--border-color)] hover:border-[var(--accent)] transition font-bold text-sm" data-active-class="bg-purple-900 text-white border-purple-500" data-i18n="journey.btn.character">الشخصيات</button>
+            </div>
+
+            <!-- Journey Stage Display -->
+            <div id="journey-stage" class="journey-visual relative rounded-3xl p-10 md:p-16 text-center shadow-2xl transition-all duration-500 transform bg-indigo-950 border border-indigo-500/30">
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-9xl opacity-10 pointer-events-none" id="journey-icon">🤫</div>
+                <h3 id="journey-name" class="text-3xl md:text-5xl font-black text-white mb-6 relative z-10">منطقة الهمس</h3>
+                <p id="journey-desc" class="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-8 relative z-10">
+                    هدوء تام، قرب من الميكروفون، ومشاعر تخاطب الروح مباشرة. مثالي للتأمل، والرسائل العاطفية، والخواطر.
+                </p>
+                <!-- Added data-audio-url to store the actual audio link -->
+                <button id="journey-play" data-audio-url="" class="relative z-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border border-white/30 px-8 py-3 rounded-full flex items-center justify-center mx-auto gap-3 transition">
+                    <span>▶</span> <span data-i18n="journey.sample">استمع للعينة</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-padding py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-10" data-i18n="portfolio.title">المشاريع</h2>
+            
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="filterPortfolio('all')" class="filter-btn active px-4 py-2 rounded-lg text-sm font-bold transition bg-[var(--bg-highlight)] hover:bg-[var(--accent)] hover:text-white" data-filter="all" data-i18n="filter.all">الكل</button>
+                <button onclick="filterPortfolio('ads')" class="filter-btn px-4 py-2 rounded-lg text-sm font-bold transition bg-[var(--bg-highlight)] hover:bg-[var(--accent)] hover:text-white" data-filter="ads" data-i18n="filter.ads">إعلانات</button>
+                <button onclick="filterPortfolio('docs')" class="filter-btn px-4 py-2 rounded-lg text-sm font-bold transition bg-[var(--bg-highlight)] hover:bg-[var(--accent)] hover:text-white" data-filter="docs" data-i18n="filter.docs">وثائقيات</button>
+                <button onclick="filterPortfolio('books')" class="filter-btn px-4 py-2 rounded-lg text-sm font-bold transition bg-[var(--bg-highlight)] hover:bg-[var(--accent)] hover:text-white" data-filter="books" data-i18n="filter.books">كتب صوتية</button>
+                <button onclick="filterPortfolio('dubbing')" class="filter-btn px-4 py-2 rounded-lg text-sm font-bold transition bg-[var(--bg-highlight)] hover:bg-[var(--accent)] hover:text-white" data-filter="dubbing" data-i18n="filter.dubbing">دوبلاج</button>
+                <button onclick="filterPortfolio('poems')" class="filter-btn px-4 py-2 rounded-lg text-sm font-bold transition bg-[var(--bg-highlight)] hover:bg-[var(--accent)] hover:text-white" data-filter="poems" data-i18n="filter.poems">قصائد</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+                
+                <!-- Items with translation keys added and added data-audio-url -->
+                <div class="portfolio-item card p-6 rounded-xl relative group" data-category="ads">
+                    <div class="absolute top-4 left-4 bg-[var(--bg-main)] px-2 py-1 rounded text-xs font-bold text-[var(--accent)]">Ads</div>
+                    <div class="text-4xl mb-4">📢</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="proj.ad.title">إعلان تجاري - سيارة رياضية</h3>
+                    <p class="text-sm text-[var(--text-muted)] mb-4" data-i18n="proj.ad.desc">أداء حماسي، سريع، وقوي.</p>
+                    <div class="audio-player bg-[var(--bg-highlight)] rounded-full p-2 flex items-center gap-3" data-duration="15" data-audio-url="">
+                        <button class="play-btn w-8 h-8 rounded-full bg-[var(--accent)] text-white flex items-center justify-center text-xs">▶</button>
+                        <div class="flex-1 h-1 bg-[var(--border-color)] rounded-full relative overflow-hidden">
+                            <div class="progress-bar h-full bg-[var(--accent)] w-0 transition-all duration-100"></div>
+                        </div>
+                        <span class="time-display text-xs font-english text-[var(--text-muted)]">00:15</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-item card p-6 rounded-xl relative group" data-category="docs">
+                    <div class="absolute top-4 left-4 bg-[var(--bg-main)] px-2 py-1 rounded text-xs font-bold text-[var(--accent)]">Doc</div>
+                    <div class="text-4xl mb-4">🪐</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="proj.doc.title">وثائقي - أسرار الفضاء</h3>
+                    <p class="text-sm text-[var(--text-muted)] mb-4" data-i18n="proj.doc.desc">نبرة عميقة، هادئة، وموثوقة.</p>
+                    <div class="audio-player bg-[var(--bg-highlight)] rounded-full p-2 flex items-center gap-3" data-duration="45" data-audio-url="">
+                        <button class="play-btn w-8 h-8 rounded-full bg-[var(--accent)] text-white flex items-center justify-center text-xs">▶</button>
+                        <div class="flex-1 h-1 bg-[var(--border-color)] rounded-full relative overflow-hidden">
+                            <div class="progress-bar h-full bg-[var(--accent)] w-0 transition-all duration-100"></div>
+                        </div>
+                        <span class="time-display text-xs font-english text-[var(--text-muted)]">00:45</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-item card p-6 rounded-xl relative group" data-category="books">
+                    <div class="absolute top-4 left-4 bg-[var(--bg-main)] px-2 py-1 rounded text-xs font-bold text-[var(--accent)]">Book</div>
+                    <div class="text-4xl mb-4">📖</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="proj.book.title">رواية - ظل الريح</h3>
+                    <p class="text-sm text-[var(--text-muted)] mb-4" data-i18n="proj.book.desc">سرد روائي متزن مع تلوين صوتي.</p>
+                    <div class="audio-player bg-[var(--bg-highlight)] rounded-full p-2 flex items-center gap-3" data-duration="60" data-audio-url="">
+                        <button class="play-btn w-8 h-8 rounded-full bg-[var(--accent)] text-white flex items-center justify-center text-xs">▶</button>
+                        <div class="flex-1 h-1 bg-[var(--border-color)] rounded-full relative overflow-hidden">
+                            <div class="progress-bar h-full bg-[var(--accent)] w-0 transition-all duration-100"></div>
+                        </div>
+                        <span class="time-display text-xs font-english text-[var(--text-muted)]">01:00</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-item card p-6 rounded-xl relative group" data-category="dubbing">
+                    <div class="absolute top-4 left-4 bg-[var(--bg-main)] px-2 py-1 rounded text-xs font-bold text-[var(--accent)]">Dub</div>
+                    <div class="text-4xl mb-4">🎭</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="proj.dub.title">لعبة فيديو - المحارب</h3>
+                    <p class="text-sm text-[var(--text-muted)] mb-4" data-i18n="proj.dub.desc">تمثيل صوتي لشخصية غاضبة.</p>
+                    <div class="audio-player bg-[var(--bg-highlight)] rounded-full p-2 flex items-center gap-3" data-duration="20" data-audio-url="">
+                        <button class="play-btn w-8 h-8 rounded-full bg-[var(--accent)] text-white flex items-center justify-center text-xs">▶</button>
+                        <div class="flex-1 h-1 bg-[var(--border-color)] rounded-full relative overflow-hidden">
+                            <div class="progress-bar h-full bg-[var(--accent)] w-0 transition-all duration-100"></div>
+                        </div>
+                        <span class="time-display text-xs font-english text-[var(--text-muted)]">00:20</span>
+                    </div>
+                </div>
+
+                 <div class="portfolio-item card p-6 rounded-xl relative group" data-category="poems">
+                    <div class="absolute top-4 left-4 bg-[var(--bg-main)] px-2 py-1 rounded text-xs font-bold text-[var(--accent)]">Poem</div>
+                    <div class="text-4xl mb-4">📜</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="proj.poem.title">قصيدة - المتنبي</h3>
+                    <p class="text-sm text-[var(--text-muted)] mb-4" data-i18n="proj.poem.desc">إلقاء شعري فصيح مع مخارج حروف سليمة.</p>
+                    <div class="audio-player bg-[var(--bg-highlight)] rounded-full p-2 flex items-center gap-3" data-duration="30" data-audio-url="">
+                        <button class="play-btn w-8 h-8 rounded-full bg-[var(--accent)] text-white flex items-center justify-center text-xs">▶</button>
+                        <div class="flex-1 h-1 bg-[var(--border-color)] rounded-full relative overflow-hidden">
+                            <div class="progress-bar h-full bg-[var(--accent)] w-0 transition-all duration-100"></div>
+                        </div>
+                        <span class="time-display text-xs font-english text-[var(--text-muted)]">00:30</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="section-padding py-20" style="background-color: var(--bg-highlight);">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8" data-i18n="calc.title">حاسبة التكلفة التقديرية</h2>
+            
+            <div class="card p-8 rounded-2xl shadow-xl">
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-sm font-bold mb-2" data-i18n="calc.type">نوع المشروع</label>
+                        <select id="projectType" class="w-full p-3 rounded-lg custom-input font-english">
+                            <option value="commercial" data-i18n="calc.opt.ad">Commercial (Ads)</option>
+                            <option value="documentary" data-i18n="calc.opt.doc">Documentary</option>
+                            <option value="audiobook" data-i18n="calc.opt.book">Audiobook</option>
+                            <option value="dubbing" data-i18n="calc.opt.dub">Dubbing</option>
+                            <option value="other" data-i18n="calc.opt.other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2" data-i18n="calc.words">عدد الكلمات</label>
+                        <input type="number" id="wordCount" class="w-full p-3 rounded-lg custom-input font-english" value="1000" min="0">
+                    </div>
+                </div>
+
+                <div class="bg-[var(--bg-main)] p-6 rounded-xl text-center border border-[var(--border-color)]">
+                    <p class="text-[var(--text-muted)] text-sm mb-2" data-i18n="calc.result">التكلفة التقريبية</p>
+                    <div class="text-4xl font-black text-[var(--accent)] font-english" id="totalPrice">$150</div>
+                    <p class="text-xs text-[var(--text-muted)] mt-2" data-i18n="calc.note">* السعر تقريبي وقد يختلف حسب المتطلبات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding py-20">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12" data-i18n="contact.title">تواصل معي</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Info -->
+                <div class="space-y-8">
+                    <p class="text-lg text-[var(--text-muted)]" data-i18n="contact.desc">
+                        هل لديك مشروع في ذهنك؟ أنا مستعد لتحويل النص إلى تجربة صوتية. تواصل معي مباشرة عبر القنوات التالية.
+                    </p>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[var(--bg-highlight)] flex items-center justify-center text-2xl">📧</div>
+                        <div>
+                            <h4 class="font-bold">Email</h4>
+                            <a href="mailto:asdasdasdasdgt@gmail.com" class="text-[var(--accent)] hover:underline font-english">asdasdasdasdgt@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[var(--bg-highlight)] flex items-center justify-center text-2xl">📱</div>
+                        <div>
+                            <h4 class="font-bold">WhatsApp / Phone</h4>
+                            <a href="tel:+201140687298" class="text-[var(--accent)] hover:underline font-english">01140687298</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4 pt-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-[var(--border-color)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition">in</a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-[var(--border-color)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition">X</a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-[var(--border-color)] flex items-center justify-center hover:bg-[var(--accent)] hover:text-white transition">IG</a>
+                    </div>
+                </div>
+
+                <!-- Form - Now wired to use Formspree via JS -->
+                <div class="card p-8 rounded-2xl">
+                    <form id="contactForm" onsubmit="handleFormSubmission(event)">
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-2" data-i18n="form.name">الاسم</label>
+                            <input type="text" name="name" class="w-full p-3 rounded-lg custom-input" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-2" data-i18n="form.email">البريد الإلكتروني</label>
+                            <!-- Note: Formspree requires a name attribute for the email field -->
+                            <input type="email" name="_replyto" class="w-full p-3 rounded-lg custom-input font-english" required>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold mb-2" data-i18n="form.msg">الرسالة</label>
+                            <textarea name="message" class="w-full p-3 rounded-lg custom-input" rows="4" required></textarea>
+                        </div>
+                        <button id="submitBtn" type="submit" class="w-full btn-primary py-3 rounded-lg font-bold flex items-center justify-center gap-2" data-i18n="form.btn">
+                            <span>إرسال</span>
+                            <div id="submitSpinner" class="spinner hidden"></div>
+                        </button>
+                    </form>
+                    <!-- Form message container (for success/error) -->
+                    <div id="formMessage" class="mt-4 p-3 rounded-lg text-center hidden"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center border-t border-[var(--border-color)] text-[var(--text-muted)] text-sm">
+        <p>&copy; 2025 Abdullah Awad. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // *** 1. CONFIGURATION ***
+        // 🚨 يجب استبدال هذا الرابط بالرابط الذي حصلت عليه من Formspree (الخطوة 1)
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/f_your_endpoint_here"; // مثال: https://formspree.io/f/f_your_endpoint_here
+
+        // --- 2. Audio Player Logic ---
+        // Global variable for tracking currently playing audio element
+        let currentAudio = null;
+
+        document.querySelectorAll('.audio-player').forEach(player => {
+            const btn = player.querySelector('.play-btn');
+            const bar = player.querySelector('.progress-bar');
+            const timeDisplay = player.querySelector('.time-display');
+            const duration = parseInt(player.dataset.duration);
+            const audioUrl = player.dataset.audioUrl;
+            
+            // Create Audio object (only if a URL is provided)
+            let audio;
+            if (audioUrl) {
+                audio = new Audio(audioUrl);
+            }
+
+            let interval;
+            let playing = false;
+            let currentTime = 0;
+
+            const resetPlayer = () => {
+                if(audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+                clearInterval(interval);
+                btn.textContent = '▶';
+                bar.style.width = `0%`;
+                timeDisplay.textContent = `00:${duration.toString().padStart(2, '0')}`;
+                playing = false;
+                player.dataset.playing = 'false';
+            };
+
+            const updateTimeDisplay = () => {
+                const timeLeft = Math.ceil(duration - currentTime);
+                timeDisplay.textContent = `00:${timeLeft.toString().padStart(2, '0')}`;
+            };
+
+            updateTimeDisplay(); // Initial display
+
+            btn.addEventListener('click', () => {
+                if (!audioUrl) {
+                    // Show a message instead of alert()
+                    showFormMessage('error', 'خطأ: لم يتم إضافة رابط العينة الصوتي لهذا المشروع.');
+                    return;
+                }
+
+                if (playing) {
+                    resetPlayer();
+                    currentAudio = null;
+                } else {
+                    // Stop any currently playing audio
+                    if (currentAudio && currentAudio !== player) {
+                        const prevPlayer = currentAudio.closest('.audio-player');
+                        if (prevPlayer) {
+                            prevPlayer.querySelector('.play-btn').click(); // Triggers reset logic
+                        }
+                    }
+                    
+                    currentAudio = player;
+                    
+                    // Start playing
+                    audio.play().catch(e => console.error("Error playing audio:", e));
+                    btn.textContent = '⏸';
+                    playing = true;
+                    player.dataset.playing = 'true';
+
+                    interval = setInterval(() => {
+                        currentTime = audio.currentTime; // Use actual audio time
+                        if (audio.ended) {
+                            resetPlayer();
+                            currentAudio = null;
+                            return;
+                        }
+                        
+                        const percent = (currentTime / duration) * 100;
+                        bar.style.width = `${percent}%`;
+                        updateTimeDisplay();
+                    }, 100);
+                }
+            });
+
+            // Set up listener for audio end if object exists
+            if (audio) {
+                audio.addEventListener('ended', resetPlayer);
+            }
+        });
+
+        // --- 3. Calculator Logic ---
+        const projectType = document.getElementById('projectType');
+        const wordCount = document.getElementById('wordCount');
+        const totalPriceDisplay = document.getElementById('totalPrice');
+
+        function calculatePrice() {
+            const words = parseInt(wordCount.value) || 0;
+            const type = projectType.value;
+            let price = 0;
+
+            // Simplified pricing logic
+            if (type === 'commercial') {
+                // Rate: $50 per 100 words (minimum 100 words)
+                price = Math.ceil(words / 100) * 50;
+                price = Math.max(50, price); // Minimum $50
+            } else if (type === 'documentary') {
+                // Rate: $20 per 100 words (minimum $20)
+                 price = Math.ceil(words / 100) * 20;
+                 price = Math.max(20, price);
+            } else if (type === 'audiobook') {
+                // Rate: $15 per 100 words (minimum $15)
+                price = Math.ceil(words / 100) * 15;
+                price = Math.max(15, price);
+            } else {
+                // General/Dubbing: $25 per 100 words
+                 price = Math.ceil(words / 100) * 25;
+                 price = Math.max(25, price);
+            }
+
+            totalPriceDisplay.textContent = `$${price}`;
+        }
+
+        projectType.addEventListener('change', calculatePrice);
+        wordCount.addEventListener('input', calculatePrice);
+        calculatePrice(); // Calculate initial price on load
+
+        // --- 4. Portfolio Filter ---
+        function filterPortfolio(category) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(btn => {
+                if(btn.dataset.filter === category) {
+                    btn.classList.add('bg-[var(--accent)]', 'text-white');
+                    btn.classList.remove('bg-[var(--bg-highlight)]');
+                } else {
+                    btn.classList.remove('bg-[var(--accent)]', 'text-white');
+                    btn.classList.add('bg-[var(--bg-highlight)]');
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.classList.remove('hidden-force');
+                } else {
+                    item.classList.add('hidden-force');
+                }
+            });
+        }
+
+        // --- 5. Voice Journey Logic & Styling Data ---
+        const journeyVisuals = {
+            whisper: {
+                classes: 'bg-indigo-950 border-indigo-500/30',
+                icon: '🤫',
+                audioUrl: '' // Placeholder for audio link
+            },
+            doc: {
+                classes: 'bg-slate-800 border-slate-500/30',
+                icon: '🪐',
+                audioUrl: '' // Placeholder for audio link
+            },
+            epic: {
+                classes: 'bg-red-950 border-red-500/30',
+                icon: '🔥',
+                audioUrl: '' // Placeholder for audio link
+            },
+            character: {
+                classes: 'bg-purple-950 border-purple-500/30',
+                icon: '🎭',
+                audioUrl: '' // Placeholder for audio link
+            }
+        };
+
+        let currentJourneyKey = 'whisper';
+
+        function setJourney(key) {
+            currentJourneyKey = key;
+            const stage = document.getElementById('journey-stage');
+            const title = document.getElementById('journey-name');
+            const desc = document.getElementById('journey-desc');
+            const icon = document.getElementById('journey-icon');
+            const playBtn = document.getElementById('journey-play');
+            
+            // Visual Update
+            const visuals = journeyVisuals[key];
+            stage.className = `journey-visual relative rounded-3xl p-10 md:p-16 text-center shadow-2xl transition-all duration-500 transform border text-white ${visuals.classes}`;
+            icon.textContent = visuals.icon;
+            
+            // Update audio URL for the journey button
+            playBtn.dataset.audioUrl = visuals.audioUrl;
+
+            // Text Update (From Translation)
+            const currentLang = document.documentElement.getAttribute('lang');
+            title.textContent = i18n[currentLang][`journey.stage.${key}.name`];
+            desc.textContent = i18n[currentLang][`journey.stage.${key}.desc`];
+        }
+
+        // --- 6. Theme & Language Toggle ---
+        const themeBtn = document.getElementById('theme-btn');
+        const langBtn = document.getElementById('lang-btn');
+        const html = document.documentElement;
+        
+        const i18n = {
+            ar: {
+                'doc.title': 'عبد الله عوض | فنان التعليق الصوتي السينمائي',
+                'hero.tag': 'خبير كيمياء الصوت',
+                'hero.name1': 'عبد الله',
+                'hero.name2': 'عوض',
+                'hero.quote': '"لكل حكاية صوت… وبعض الأصوات تحوّل الحكايات إلى عوالم."',
+                'hero.cta': 'استمع إلى الأعمال',
+                'hero.contact': 'تواصل الآن',
+                'about.title': 'الراوي خلف الصوت',
+                'about.desc': 'فنان صوتي مصري، يمزج بين خامة الصوت القوية والأداء التمثيلي الدقيق. لا أكتفي بالقراءة، بل أصنع عوالماً صوتية باستخدام أحدث تقنيات الهندسة الصوتية (Studio One). خبرتي تمتد من الوثائقيات العلمية المعقدة إلى الإعلانات التجارية الحماسية.',
+                'about.s1.title': 'استوديو احترافي',
+                'about.s1.desc': 'جودة بث (Broadcast Quality) مع عزل تام.',
+                'about.s2.title': 'سرعة في التسليم',
+                'about.s2.desc': 'التزام صارم بالمواعيد النهائية.',
+                'journey.title': 'الرحلة الصوتية',
+                'journey.subtitle': 'اختر "العالم" لتعيش التجربة وتكتشف النبرة المناسبة لمشروعك.',
+                'journey.sample': 'استمع للعينة',
+                // Buttons
+                'journey.btn.whisper': 'الهمس',
+                'journey.btn.doc': 'الوثائقي',
+                'journey.btn.epic': 'الملحمي',
+                'journey.btn.character': 'الشخصيات',
+                // Stage Data
+                'journey.stage.whisper.name': 'منطقة الهمس',
+                'journey.stage.whisper.desc': 'هدوء تام، قرب من الميكروفون، ومشاعر تخاطب الروح مباشرة. مثالي للتأمل والرسائل العاطفية.',
+                'journey.stage.doc.name': 'العالم الوثائقي',
+                'journey.stage.doc.desc': 'صوت رخيم، متزن، وموثوق. ينقل المعلومة بوضوح وهيبة. مثالي للقنوات العلمية والتاريخية.',
+                'journey.stage.epic.name': 'قاعة الملاحم',
+                'journey.stage.epic.desc': 'قوة، عمق، وطاقة هائلة. الصوت الذي يزلزل المقطورات السينمائية (Trailers) والألعاب.',
+                'journey.stage.character.name': 'مختبر الشخصيات',
+                'journey.stage.character.desc': 'تلوين صوتي كامل. من العجوز الحكيم إلى المحارب الغاضب. تمثيل صوتي يحيي النص.',
+                // Portfolio
+                'portfolio.title': 'المشاريع',
+                'filter.all': 'الكل',
+                'filter.ads': 'إعلانات',
+                'filter.docs': 'وثائقيات',
+                'filter.books': 'كتب',
+                'filter.dubbing': 'دوبلاج',
+                'filter.poems': 'قصائد',
+                // Projects
+                'proj.ad.title': 'إعلان تجاري - سيارة رياضية',
+                'proj.ad.desc': 'أداء حماسي، سريع، وقوي.',
+                'proj.doc.title': 'وثائقي - أسرار الفضاء',
+                'proj.doc.desc': 'نبرة عميقة، هادئة، وموثوقة.',
+                'proj.book.title': 'رواية - ظل الريح',
+                'proj.book.desc': 'سرد روائي متزن مع تلوين صوتي.',
+                'proj.dub.title': 'لعبة فيديو - المحارب',
+                'proj.dub.desc': 'تمثيل صوتي لشخصية غاضبة.',
+                'proj.poem.title': 'قصيدة - المتنبي',
+                'proj.poem.desc': 'إلقاء شعري فصيح مع مخارج حروف سليمة.',
+                // Calc
+                'calc.title': 'حاسبة التكلفة',
+                'calc.type': 'نوع المشروع',
+                'calc.words': 'عدد الكلمات',
+                'calc.opt.ad': 'إعلانات تجارية',
+                'calc.opt.doc': 'وثائقي',
+                'calc.opt.book': 'كتاب صوتي',
+                'calc.opt.dub': 'دوبلاج',
+                'calc.opt.other': 'أخرى',
+                'calc.result': 'التكلفة التقريبية',
+                'calc.note': '* السعر تقريبي وقد يختلف حسب المتطلبات',
+                'nav.portfolio': 'المشاريع',
+                'nav.journey': 'الرحلة',
+                'nav.calc': 'التكلفة',
+                'nav.contact': 'تواصل',
+                'contact.title': 'تواصل معي',
+                'contact.desc': 'هل لديك مشروع في ذهنك؟ أنا مستعد لتحويل النص إلى تجربة صوتية. تواصل معي مباشرة عبر القنوات التالية.',
+                'form.name': 'الاسم',
+                'form.email': 'البريد الإلكتروني',
+                'form.msg': 'الرسالة',
+                'form.btn': 'إرسال'
+            },
+            en: {
+                'doc.title': 'Abdullah Awad | Cinematic Voice Over Artist',
+                'hero.tag': 'The Sound Alchemist',
+                'hero.name1': 'Abdullah',
+                'hero.name2': 'Awad',
+                'hero.quote': '"Every story has a voice... and some voices turn stories into worlds."',
+                'hero.cta': 'Listen to Reel',
+                'hero.contact': 'Contact Now',
+                'about.title': 'The Narrator',
+                'about.desc': 'An Egyptian voice artist blending powerful vocals with precise acting. I don\'t just read; I create audio worlds using top-tier engineering (Studio One). My expertise ranges from complex documentaries to energetic commercials.',
+                'about.s1.title': 'Pro Studio',
+                'about.s1.desc': 'Broadcast Quality with total isolation.',
+                'about.s2.title': 'Fast Delivery',
+                'about.s2.desc': 'Strict adherence to deadlines.',
+                'journey.title': 'Voice Journey',
+                'journey.subtitle': 'Select a "World" to experience the tone.',
+                'journey.sample': 'Play Sample',
+                // Buttons
+                'journey.btn.whisper': 'Whisper',
+                'journey.btn.doc': 'Documentary',
+                'journey.btn.epic': 'Epic',
+                'journey.btn.character': 'Character',
+                // Stage Data
+                'journey.stage.whisper.name': 'The Whisper Zone',
+                'journey.stage.whisper.desc': 'Complete silence, close to the mic, speaking directly to the soul. Perfect for meditation and emotional messages.',
+                'journey.stage.doc.name': 'Documentary World',
+                'journey.stage.doc.desc': 'Deep, balanced, and authoritative. Conveys information with clarity and prestige. Ideal for scientific and history channels.',
+                'journey.stage.epic.name': 'The Epic Hall',
+                'journey.stage.epic.desc': 'Power, depth, and immense energy. The voice that shakes movie trailers and gaming cinematics.',
+                'journey.stage.character.name': 'Character Lab',
+                'journey.stage.character.desc': 'Full vocal coloring. From the wise old man to the angry warrior. Voice acting that brings script to life.',
+                // Portfolio
+                'portfolio.title': 'Portfolio',
+                'filter.all': 'All',
+                'filter.ads': 'Ads',
+                'filter.docs': 'Docs',
+                'filter.books': 'Books',
+                'filter.dubbing': 'Dubbing',
+                'filter.poems': 'Poems',
+                // Projects
+                'proj.ad.title': 'Commercial - Sports Car',
+                'proj.ad.desc': 'Energetic, fast, and powerful performance.',
+                'proj.doc.title': 'Documentary - Space Secrets',
+                'proj.doc.desc': 'Deep, calm, and authoritative tone.',
+                'proj.book.title': 'Novel - Shadow of the Wind',
+                'proj.book.desc': 'Balanced storytelling with vocal coloring.',
+                'proj.dub.title': 'Video Game - The Warrior',
+                'proj.dub.desc': 'Voice acting for an angry character.',
+                'proj.poem.title': 'Poem - Al-Mutanabbi',
+                'proj.poem.desc': 'Classical poetic recitation with perfect pronunciation.',
+                // Calc
+                'calc.title': 'Cost Estimator',
+                'calc.type': 'Project Type',
+                'calc.words': 'Word Count',
+                'calc.opt.ad': 'Commercial (Ads)',
+                'calc.opt.doc': 'Documentary',
+                'calc.opt.book': 'Audiobook',
+                'calc.opt.dub': 'Dubbing',
+                'calc.opt.other': 'Other',
+                'calc.result': 'Estimated Cost',
+                'calc.note': '* Price is approximate and varies by requirements',
+                'nav.portfolio': 'Portfolio',
+                'nav.journey': 'Journey',
+                'nav.calc': 'Cost',
+                'nav.contact': 'Contact',
+                'contact.title': 'Contact Me',
+                'contact.desc': 'Have a project in mind? I am ready to turn text into an audio experience. Contact me directly via the channels below.',
+                'form.name': 'Name',
+                'form.email': 'Email',
+                'form.msg': 'Message',
+                'form.btn': 'Send'
+            }
+        };
+
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            themeBtn.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+        });
+
+        langBtn.addEventListener('click', () => {
+            const current = html.getAttribute('lang');
+            const next = current === 'ar' ? 'en' : 'ar';
+            html.setAttribute('lang', next);
+            html.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+            langBtn.textContent = next === 'ar' ? 'EN' : 'عربي';
+            
+            // Apply Translations
+            const texts = i18n[next];
+            for (const [key, value] of Object.entries(texts)) {
+                document.querySelectorAll(`[data-i18n="${key}"]`).forEach(el => el.textContent = value);
+            }
+            
+            // Force refresh journey text
+            setJourney(currentJourneyKey);
+        });
+        
+        // --- 7. Form Submission Logic (Formspree via AJAX) ---
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitBtnText = submitBtn.querySelector('span');
+        const submitSpinner = document.getElementById('submitSpinner');
+        const formMessage = document.getElementById('formMessage');
+        
+        // Function to show/hide status message
+        function showFormMessage(type, message) {
+            let msgText;
+            let msgClass;
+
+            if (type === 'success') {
+                msgText = message || "تم إرسال رسالتك بنجاح! شكراً لتواصلك وسأرد عليك قريباً.";
+                msgClass = 'bg-green-600/30 text-green-300 border-green-500';
+            } else if (type === 'error') {
+                 msgText = message || "حدث خطأ أثناء إرسال الرسالة. يرجى التأكد من ملء جميع الحقول بشكل صحيح والمحاولة لاحقاً.";
+                 msgClass = 'bg-red-600/30 text-red-300 border-red-500';
+            } else if (type === 'loading') {
+                 msgText = "جارٍ إرسال الرسالة...";
+                 msgClass = 'bg-blue-600/30 text-blue-300 border-blue-500';
+            }
+
+            formMessage.textContent = msgText;
+            formMessage.className = `mt-4 p-3 rounded-lg text-center border ${msgClass}`;
+            formMessage.classList.remove('hidden');
+            
+            if (type !== 'loading') {
+                // Hide message after 5 seconds
+                setTimeout(() => formMessage.classList.add('hidden'), 5000);
+            }
+        }
+        
+        // Function to handle form submission
+        async function handleFormSubmission(event) {
+            event.preventDefault();
+
+            // Check if the endpoint is configured
+            if (FORMSPREE_ENDPOINT.includes('f_your_endpoint_here')) {
+                 showFormMessage('error', '🚨 الرجاء تحديث رابط Formspree في الكود لتفعيل الإرسال.');
+                 return;
+            }
+
+            // Disable button and show spinner
+            submitBtn.disabled = true;
+            submitBtnText.classList.add('opacity-0');
+            submitSpinner.classList.remove('hidden');
+            showFormMessage('loading');
+
+            const data = new FormData(form);
+
+            try {
+                const response = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showFormMessage('success');
+                    form.reset(); // Clear the form after success
+                } else {
+                    // Try to parse error details from Formspree response
+                    let errorMsg = "حدث خطأ غير معروف أثناء الإرسال.";
+                    const errorData = await response.json().catch(() => ({}));
+                    if (errorData.errors && errorData.errors.length > 0) {
+                        errorMsg = errorData.errors[0].message;
+                    }
+                    showFormMessage('error', errorMsg);
+                }
+
+            } catch (error) {
+                console.error('Submission Error:', error);
+                showFormMessage('error', 'فشل في الاتصال بالشبكة أو خدمة الإرسال. تأكد من أن الرابط صحيح.');
+            } finally {
+                // Re-enable button and hide spinner
+                submitBtn.disabled = false;
+                submitBtnText.classList.remove('opacity-0');
+                submitSpinner.classList.add('hidden');
+            }
+        }
+        
+        // Add the new submission handler to the form element
+        form.onsubmit = handleFormSubmission;
+
+        setJourney(currentJourneyKey); // Initialize journey text correctly on load
+
+    </script>
+</body>
+</html>
+
